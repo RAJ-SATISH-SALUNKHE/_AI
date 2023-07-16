@@ -1,3 +1,5 @@
+// Online GDB test_ttt
+
 #include <stdio.h>
 
 int flag[] = {0,0};
@@ -253,23 +255,31 @@ void costMatrix()
     {
         for(j=0; j<3; j++)
         {
-            if(((i==0 && j==0) || (i==0 && j==2) || (i==2 && j==0) || (i==2 && j==2))&& indexm[1][1] == 9)
+            // If triangulation has already happened
+            if((indexm[0][0]==1 && indexm[2][0]==1 && indexm[2][2]) || (indexm[0][2]==1 && indexm[2][2]==1 && indexm[2][0]))
+            {
+                flag_extreme = 0;
+            }
+            // Defying advantage of corner
+            else if(((i==0 && j==0) || (i==0 && j==2) || (i==2 && j==0) || (i==2 && j==2))&& indexm[1][1] == 9)
             {
                 flag_extreme = 1;
                 indexm[1][1] = 0;
             }
-
-            if((indexm[0][0]==1 && indexm[2][2]==1) && indexm[0][1] == 9)
+            // Avoiding triangulation
+            else if((indexm[0][0]==1 && indexm[2][2]==1) && indexm[0][1] == 9)
             {
                 flag_extreme = 1;
                 indexm[0][1] = 0;
             }
-            if((indexm[0][2]==1 && indexm[2][0]==1) && indexm[0][1] == 9)
+            //Avoiding triangulatoin
+            else if((indexm[0][2]==1 && indexm[2][0]==1) && indexm[0][1] == 9)
             {
                 flag_extreme = 1;
                 indexm[0][1] = 0;
             }
 
+            // Cost assignment to each cell
             if(indexm[i][j]==0)
             {
                 cost_mat[i][j] = -1;
@@ -346,7 +356,7 @@ void main()
         drawMatrix();
         person_chance = 0;
 
-                if(isWinningAI())
+        if(isWinningAI())
         {
             printf("THE AI HAS WON !!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
             break;
