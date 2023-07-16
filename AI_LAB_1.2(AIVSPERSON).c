@@ -15,6 +15,7 @@ int i,j,k;
 int person_chance=0;
 int position;
 int blankColumn, blankRow, row, column;
+int flagBlank = 0;
 
 void chancePerson()
 {
@@ -132,16 +133,18 @@ void goAI()
         for(j=0; j<3; j++)
         {
             path_cost += cost_mat[i][j];
-            if(indexm[i][j] == 9)
+            if(indexm[i][j] == 9 && flagBlank != 1)
             {
                 blankRow = i;
                 blankColumn = j;
+                flagBlank = 1;
             }
         }
         path_matrix[k][0] = path_cost;
         path_matrix[k][1] = blankRow;
         path_matrix[k][2] = blankColumn;
         //printf("Path cost at path %d is %d\n", k, path_cost);
+        flagBlank = 0;
         path_cost = 0;
         k++;
     }
@@ -151,16 +154,18 @@ void goAI()
         for(i=0; i<3; i++)
         {
             path_cost += cost_mat[i][j];
-            if(indexm[i][j] == 9)
+            if(indexm[i][j] == 9 && flagBlank != 1)
             {
                 blankRow = i;
                 blankColumn = j;
+                flagBlank = 1;
             }
         }
         path_matrix[k][0] = path_cost;
         path_matrix[k][1] = blankRow;
         path_matrix[k][2] = blankColumn;
        // printf("Path cost at path %d is %d\n", k, path_cost);
+       flagBlank = 0;
         path_cost = 0;
         k++;
     }
@@ -168,9 +173,10 @@ void goAI()
     for(i=0; i<3; i++)
     {
         path_cost += cost_mat[i][i];
-        if(indexm[i][i] == 9)
+        if(indexm[i][i] == 9 && flagBlank != 1)
         {
             blankRow = blankColumn = i;
+            flagBlank = 1;
         }
         path_matrix[k][0] = path_cost;
         path_matrix[k][1] = blankRow;
@@ -178,15 +184,17 @@ void goAI()
 
     }
     //printf("Path cost at path %d is %d\n", k, path_cost);
+    flagBlank = 0;
     path_cost = 0;
     k++;
     for(i=0; i<3; i++)
     {
         path_cost += cost_mat[2-i][i];
-        if(indexm[2-i][i] == 9)
+        if(indexm[2-i][i] == 9 && flagBlank != 1)
         {
             blankRow = 2-i;
             blankColumn = i;
+            flagBlank = 1;
         }
         path_matrix[k][0] = path_cost;
         path_matrix[k][1] = blankRow;
@@ -194,6 +202,7 @@ void goAI()
 
     }
     //printf("Path cost at path %d is %d\n", k, path_cost);
+    flagBlank = 0;
     path_cost = 0;
     k=0;
 
