@@ -207,6 +207,7 @@ void goAI()
     k=0;
 
     // FOR LOOP FOR MINIMUM COST AND BLANK SPOTS AT THAT PATH
+
     for(k=0; k<8; k++)
     {
         if(k==0)
@@ -352,13 +353,14 @@ void main()
 {
     printf("WELCOME TO TIC TAC TOE, YOU ARE PLAYING AGAINST A VIRTUAL AI ENABLED AGENT 'BATMAN'\n\n");
     printf("BATMAN DARES YOU TO WIN !\n\n");
+    printf("THIS IS THE TIC TAC TOE GRID WITH POSITION NUMBERS FOR YOUR REFERENCE \n\n");
     drawMatrix();
     while(!isWinningAI() || !isWinningAI() || !isDraw)
     {
         matrix_drawing_flag = 1;
         while(person_chance != 1)
         {
-            printf("PERSON.... pleaee enter the position where you want to place X: - ");
+            printf("PERSON.... please enter the position where you want to place X:  ");
             scanf("%d", &position);
             chancePerson();
         }
@@ -367,7 +369,8 @@ void main()
 
         if(isWinningAI())
         {
-            printf("THE AI HAS WON !!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+            printf("BATMAN WINS !!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+            printf("YOU LOST, KID !");
             break;
         }
         if(isWinningPerson())
@@ -378,6 +381,7 @@ void main()
         if(isDraw())
         {
             printf("THE MATCH IS DRAW !!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+            printf("YOU CAN NEVER WIN AGAINST ME, KID !");
             break;
         }
 
@@ -390,7 +394,8 @@ void main()
 
         if(isWinningAI())
         {
-            printf("THE AI HAS WON !!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+            printf("BATMAN WINS !!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+            printf("YOU LOST, KID !");
             break;
         }
         if(isWinningPerson())
@@ -400,7 +405,8 @@ void main()
         }
         if(isDraw())
         {
-            printf("THE MATCH IS DRAW !!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+            printf("THE MATCH IS DRAW !!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n");
+            printf("YOU CAN NEVER WIN AGAINST ME, KID !");
             break;
         }
 
