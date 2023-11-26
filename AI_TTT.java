@@ -164,29 +164,6 @@ class TTT
         }
     }
 
-    int minCost()
-    {
-        int min = 1000000;
-        int cost = 0;
-        costMatrix();
-        for(int i = 0; i < 3; i++) {
-            cost = costm[i][0] + costm[i][1] + costm[i][2];
-            min = (cost < min) ? cost : min;
-        }
-        for(int i = 0; i < 3; i++)
-        {
-            cost = costm[0][i] + costm[1][i] + costm[2][i];
-            min = (cost < min)?cost:min;
-        }
-
-        cost = costm[0][0] + costm[1][1] + costm[2][2];
-        min = (cost < min)?cost:min;
-
-        cost = costm[0][1] + costm[1][1] + costm[2][0];
-        min = (cost < min)?cost:min;
-
-        return min;
-    }
 
 
 
